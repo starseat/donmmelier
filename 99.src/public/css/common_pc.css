@@ -805,7 +805,6 @@ select {
 
 .section_06_w {
     padding: 101px 0 125px;
-    min-height: calc(100vh - 226px);
     background-color: #1a1a1a;
     text-align: center;
 }
