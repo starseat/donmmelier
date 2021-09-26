@@ -467,6 +467,20 @@ select {
 
 .btn_icon_down {
     display: block;
+    animation: Mouse_act 1.3s ease-out infinite;
+}
+
+@-webkit-keyframes Mouse_act {
+    0% {
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 0;
+    }
 }
 
 .section_02_w {

@@ -275,7 +275,9 @@ select {
     z-index: 2;
 }
 
-.gnb_logo {}
+.gnb_logo {
+    display: block;
+}
 
 .common_lnb_inner {
     position: fixed;
@@ -382,8 +384,10 @@ select {
 }
 
 .sns_share_btn {
+    display: block;
+    padding-left: 30px;
     position: Absolute;
-    left: 33px;
+    left: 0;
     top: 50%;
     margin-top: -31px;
     width: 62px;
@@ -489,7 +493,7 @@ select {
     position: Absolute;
     left: 0;
     top: 50%;
-    margin-top: -207px;
+    margin-top: -175px;
     text-align: center;
     width: 100%;
 }
@@ -542,25 +546,35 @@ select {
 
 .btn_scroll_down {
     display: block;
-    position: absolute;
+    position: fixed;
     left: 50%;
     bottom: 0;
     z-index: 4;
-    margin-left: -52px;
-    width: 105px;
-    height: 65px;
+    margin-left: -60px;
+    width: 120px;
+    height: 95px;
     padding-bottom: 19px;
     box-sizing: border-box;
 }
 
 .btn_icon_down {
-    position: Absolute;
-    left: 50%;
-    top: 50%;
-    margin: -25px 0 0 -60px;
     width: 120px;
     height: 51px;
     background-position: 0 0;
+    animation: Mouse_act 1.3s ease-out infinite;
+}
+
+@-webkit-keyframes Mouse_act {
+    0% {
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 0;
+    }
 }
 
 .section_02_w {
@@ -583,7 +597,7 @@ select {
 }
 
 .s02_form_w {
-    padding: 50px 50px 120px;
+    padding: 50px 50px 140px;
     background-size: 100% 100%;
 }
 
@@ -595,7 +609,7 @@ select {
 .form_input_w {
     position: absolute;
     left: 0;
-    bottom: 60px;
+    top: 42%;
     padding: 0 70px 0 60px;
     width: 100%;
     box-sizing: border-box;
@@ -923,7 +937,11 @@ select {
 
 /*  --------------- 태블릿 제어  --------------- */
 
-@media screen and (max-width:1080px) {}
+@media screen and (max-width:1025px) {
+    .section_01_w .section_inner {
+        margin-top: -332px;
+    }
+}
 
 
 /* --------------- end:태블릿 제어  --------------- */
@@ -931,7 +949,108 @@ select {
 
 /*  --------------- 모바일 제어  --------------- */
 
-@media screen and (max-width:750px) {}
+@media screen and (max-width:760px) {
+    .section_01_w {
+        background-size: cover;
+    }
+    .section_01_w .section_inner {
+        margin-top: -160px;
+    }
+    .sns_share_btn {
+        padding-left: 15px;
+    }
+    .gnb_hambug {
+        right: 15px;
+    }
+    .s01_text {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .s01_motion_text {
+        margin-top: 18px;
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .s01_image_w {
+        margin-top: 28px;
+    }
+    .form_group {
+        padding-left: 45px;
+    }
+    .input_label {
+        font-size: 14px;
+    }
+    .form_agree .input_label {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .form_input_w {
+        padding: 0 60px;
+    }
+    .btn_form_send {
+        margin-top: 15px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+    }
+    .s03_title {
+        font-size: 38px;
+        line-height: 55px;
+    }
+    .s0301_motion_text {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .s0302_motion_text {
+        font-size: 16px;
+    }
+    .s0302_motion_text .number {
+        font-size: 16px;
+        width: 28px;
+        height: 28px;
+        line-height: 26px;
+    }
+    .s05_title_sub {
+        font-size: 20px;
+    }
+    .s05_title_w {
+        font-size: 50px;
+    }
+    .s05_text_w strong {
+        font-size: 20px;
+    }
+    .s05_text_w {
+        font-size: 16px;
+    }
+    .step_title {
+        font-size: 20px;
+    }
+    .s05_step_date {
+        font-size: 25px;
+    }
+    .s05_step_date span {
+        font-size: 35px;
+    }
+    .section_06_w {
+        padding-bottom: 256px;
+    }
+    .s06_sub_text {
+        margin-top: 30px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .s06_motion_text {
+        display: block;
+        margin-top: 15px;
+    }
+    .footer {
+        font-size: 12px;
+        padding: 25px 0 10px;
+    }
+    .footer_text_list2 {
+        padding: 20px 15px;
+    }
+}
 
 
 /*  --------------- end:모바일 제어  --------------- */
