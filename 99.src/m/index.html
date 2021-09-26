@@ -33,7 +33,7 @@
                     <ul class="common_lnb_list">
                         <li class="slnb_inner">
                             <!-- 활성화 효과 : gnb_on-->
-                            <a href="#section_02" class="slnb_link">
+                            <a href="javascript: void(0);" class="slnb_link" lnb-index="1">
                                 <span class="slnb_txt_box">
                                 <span class="slnb_txt">
                                     사전 신청
@@ -43,7 +43,7 @@
                         </li>
                         <li class="slnb_inner">
                             <!-- 활성화 효과 : gnb_on-->
-                            <a href="#section_03" class="slnb_link">
+                            <a href="javascript: void(0);" class="slnb_link" lnb-index="2">
                                 <span class="slnb_txt_box">
                                 <span class="slnb_txt">
                                     한돈 소믈리에 자격증
@@ -53,7 +53,7 @@
                         </li>
                         <li class="slnb_inner">
                             <!-- 활성화 효과 : gnb_on-->
-                            <a href="#section_06" class="slnb_link">
+                            <a href="javascript: void(0);" class="slnb_link" lnb-index="3">
                                 <span class="slnb_txt_box">
                                 <span class="slnb_txt">
                                      이벤트
@@ -273,6 +273,19 @@
             });
             $('#lnbBtnClose').on('click', function() {
                 $('#common-gnb').removeClass('gnb_open');
+            });
+
+            $('.slnb_link').on('click', function(event) {
+                var lnbIndex = $(this).attr('lnb-index');
+                $('#common-gnb').removeClass('gnb_open');
+
+                if (lnbIndex == '1') {
+                    location.href = '#section_02';
+                } else if (lnbIndex == '2') {
+                    location.href = '#section_03';
+                } else {
+                    location.href = '#section_06';
+                }
             });
         })
     </script>
