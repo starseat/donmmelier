@@ -1,0 +1,30 @@
+CREATE TABLE event_advance_booking (
+	seq BIGINT NOT NULL AUTO_INCREMENT,
+    phone VARCHAR(16) NOT NULL,
+    name VARCHAR(32) NOT NULL,
+    device VARCHAR(16) NOT NULL DEFAULT 'pc',
+    detail VARCHAR(16) null,
+	created_at DATETIME NOT NULL DEFAULT now(),
+	PRIMARY KEY (seq, phone),
+	UNIQUE INDEX phone (phone)
+) COLLATE='utf8mb4_unicode_ci' ENGINE=InnoDB;
+
+CREATE TABLE members (
+	seq BIGINT NOT NULL AUTO_INCREMENT,
+    user_id VARCHAR(32) NOT NULL,    
+	email VARCHAR(64) NULL,
+	name VARCHAR(32) NULL DEFAULT NULL,
+	password VARCHAR(128) NOT NULL,
+	member_type CHAR(1) NOT NULL DEFAULT 'B',
+	created_at DATETIME NOT NULL DEFAULT now(),
+	updated_at DATETIME NOT NULL DEFAULT now(),
+	deleted_at DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (seq, user_id),
+	UNIQUE INDEX user_id (user_id)
+) COLLATE='utf8mb4_unicode_ci' ENGINE=InnoDB;
+
+
+
+
+insert into members (user_id, name, password, member_type)
+values ('admin', '관리자', '$2y$10$vPioucpp5d0w9Sf6OfdEwuM7MkaJ1F8flTdl4ojlkYg367o8Wty56', 'A');
