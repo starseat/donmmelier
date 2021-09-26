@@ -1,7 +1,7 @@
 <?php
     //header("Access-Control-Allow-Headers: X-Requested-With, X-Prototype-Version");
     
-	$servername = "127.0.0.1";
+	$servername = "localhost";
 	$username = "donmmelier";
 	$password = "dondb!23";
     $dbname = "donmmelier";

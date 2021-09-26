@@ -91,7 +91,7 @@ $paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_c
                 </tr>
             <?php } ?>
             <?php } else { ?>
-                <tr><th scope="row"></th><td>등록된 정보가 없습니다.</td><td></td><td></td></tr>
+                <tr><td colspan="6">등록된 정보가 없습니다.</tr>
             <?php } ?>
 
             
@@ -104,7 +104,7 @@ $paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_c
                 <?php if ($paging_info['page_prev'] > 0) { ?>
 
                     <li class="page-item">
-                        <a class="page-link page-link-dark" href="./notice.php?page=<?= $paging_info['page_prev']; ?> aria-label="Previous">
+                        <a class="page-link page-link-dark" href="./index.php?page=<?= $paging_info['page_prev']; ?> aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -115,13 +115,13 @@ $paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_c
                 ?>
                     <li class="page-item active-dark"><a class="page-link page-link-dark" href="#"><?= $i ?></a></li>
                 <?php } else { ?>
-                    <li class="page-item"><a class="page-link page-link-dark" href="./notice.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                    <li class="page-item"><a class="page-link page-link-dark" href="./index.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                 <?php } ?>
                 <?php } ?>
 
                 <?php if ($paging_info['page_next'] < $paging_info['page_total']) { ?>
                     <li class="page-item">
-                        <a class="page-link page-link-dark" href="./notice.php?page=<?= $paging_info['page_next']; ?>" aria-label="Next">
+                        <a class="page-link page-link-dark" href="./index.php?page=<?= $paging_info['page_next']; ?>" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

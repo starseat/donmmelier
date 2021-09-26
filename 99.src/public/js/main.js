@@ -10,13 +10,29 @@ $(document).ready(function() {
     $('#bookingForm').submit(submitBooking);
 
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        // if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        // if ((($(window).scrollTop() + $(window).height()) + 10) >= $(document).height()) {
+        if ($(window).scrollTop() > __gScrollDownHideHeight) {
             $('#btnScrollDown').hide();
         } else {
             $('#btnScrollDown').fadeIn();
         }
     });
+
+    getScrollDownHideHeight();
+    $(window).resize(function() {
+        getScrollDownHideHeight();
+    });
 });
+
+var __gScrollDownHideHeight = 0;
+
+function getScrollDownHideHeight() {
+    __gScrollDownHideHeight = 0;
+    for (var i = 1; i < 6; i++) {
+        __gScrollDownHideHeight += $('#section_0' + i).height();
+    }
+}
 
 // function copyToClipboard() {
 //     var copyUrl = 'http://donmmelier.com/';
@@ -110,8 +126,36 @@ function submitBooking(event) {
         regDetail: getOsInfo().trim()
     };
 
-    $.post('/api/regist.php', reqParam, function(jqXHR) {}, 'json' /* xml, text, script, html */ )
-        .done(function(resultData) {
+    // alert('[submitBooking] regName: ' + reqParam.regName);
+    // alert('[submitBooking] regPhone: ' + reqParam.regPhone);
+    // alert('[submitBooking] regDevice: ' + reqParam.regDevice);
+    // alert('[submitBooking] regDetail: ' + reqParam.regDetail);
+
+    // $.post('/api/regist.php', reqParam, function(jqXHR) {}, 'json' /* xml, text, script, html */ )
+    //     .done(function(resultData) {
+    //         // alert('[submitBooking] ajax success : ' + resultData.message);
+    //         console.log('[regist ajax success] result:: ', resultData);
+    //         alert(resultData.message);
+
+    //         if (resultData.result) {
+    //             $('#regName').val('');
+    //             $('#regPhone1').val('');
+    //             $('#regPhone2').val('');
+    //             $('#regPhone3').val('');
+    //         }
+    //     })
+    //     // .fail(function(jqXHR) { alert('[submitBooking] ajax fail : ' + JSON.stringify(jqXHR)); })
+    //     // .always(function(jqXHR) {})
+    // ;
+
+    $.ajax({
+        url: '/api/regist.php', // 요청 할 주소
+        async: true, // false 일 경우 동기 요청으로 변경
+        type: 'POST', // GET, PUT
+        data: reqParam, // 전송할 데이터
+        dataType: 'json', // xml, json, script, html
+        beforeSend: function(jqXHR) {}, // 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+        success: function(resultData) {
             console.log('[regist ajax success] result:: ', resultData);
             alert(resultData.message);
 
@@ -120,11 +164,12 @@ function submitBooking(event) {
                 $('#regPhone1').val('');
                 $('#regPhone2').val('');
                 $('#regPhone3').val('');
+                $('#formAgree').prop('checked', false);
             }
-        })
-        // .fail(function(jqXHR) {})
-        // .always(function(jqXHR) {})
-    ;
+        }, // 요청 완료 시
+        error: function(jqXHR) {}, // 요청 실패.
+        complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+    });
 
 }
 

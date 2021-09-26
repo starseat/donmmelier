@@ -19,22 +19,28 @@ if($httpMethod != 'POST') {
 }
 
 $regName = mysqli_real_escape_string($conn, $_POST['regName']);
+// viewAlert($regName);
 // echo 'name: ' . $regName; echo '<br>';
 $regPhone = mysqli_real_escape_string($conn, $_POST['regPhone']);
+// viewAlert($regPhone);
 // echo 'phone: ' . $regPhone; echo '<br>';
 $regDevice = mysqli_real_escape_string($conn, $_POST['regDevice']);
+// viewAlert($regDevice);
 // echo 'device: ' . $regDevice; echo '<br>';
 $regDetail = mysqli_real_escape_string($conn, $_POST['regDetail']);
+// viewAlert($regDetail);
 // echo 'detail: ' . $regDetail; echo '<br>';
 
 
 $sql  = "SELECT name, phone, device, detail, created_at FROM event_advance_booking WHERE phone = $regPhone";
+// viewAlert($sql);
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 $reg_count = $result->num_rows;
+// viewAlert($reg_count);
 $reg_info = mysqli_fetch_array($result);
 if($reg_count > 0) {
     $result_array['message'] = '이미 등록된 번호입니다.';
-    $result_array['date'] = date_format($reg_info['created_at'], 'Y년 m월 d일 H시 i분 s초');
+    $result_array['date'] = $reg_info['created_at'];
     $result_array['name'] = $reg_info['name'];
     $result_array['device'] = $reg_info['device'];
     $result_array['detail'] = $reg_info['detail'];
@@ -54,6 +60,7 @@ $sql = "
     . "'" . $regName . "', "
     . "'" . $regDevice . "', "
     . "'" . $regDetail . "')";
+// viewAlert($sql);
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
 $result_array['message'] = '등록되었습니다.';
