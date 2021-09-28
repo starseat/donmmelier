@@ -89,6 +89,7 @@ function submitBooking(event) {
     }
 
     var regName = $('#regName').val();
+
     var name_regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9| ]+$/;
     if (!name_regex.test(regName)) {
         alert('성함이 잘못입력되었습니다.');
@@ -124,6 +125,11 @@ function submitBooking(event) {
         regDevice: checkMobile() ? 'mobile' : 'pc',
         regDetail: getOsInfo().trim()
     };
+
+    // alert('[submitBooking] regName: ' + reqParam.regName);
+    // alert('[submitBooking] regPhone: ' + reqParam.regPhone);
+    // alert('[submitBooking] regDevice: ' + reqParam.regDevice);
+    // alert('[submitBooking] regDetail: ' + reqParam.regDetail);
 
     // $.post('/api/regist.php', reqParam, function(jqXHR) {}, 'json' /* xml, text, script, html */ )
     //     .done(function(resultData) {
@@ -161,7 +167,7 @@ function submitBooking(event) {
                 $('#formAgree').prop('checked', false);
             }
         }, // 요청 완료 시
-        error: function(jqXHR) {alert(jqXHR);}, // 요청 실패.
+        error: function(jqXHR) {}, // 요청 실패.
         complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
     });
 
