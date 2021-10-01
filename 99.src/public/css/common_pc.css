@@ -389,7 +389,12 @@ select {
     position: relative;
     z-index: 3;
 }
-.section_cont::after { content: ''; display: block; clear: both; }
+
+.section_cont::after {
+    content: '';
+    display: block;
+    clear: both;
+}
 
 .section_01_w {
     background-color: #0a242d;
@@ -750,6 +755,11 @@ select {
     position: relative;
     background-color: #000;
     border: 1px solid #b6c1bf;
+}
+
+#target_youtube_view {
+    width: 1025px;
+    height: 552px;
 }
 
 .icon_play {
