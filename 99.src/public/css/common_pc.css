@@ -389,6 +389,7 @@ select {
     position: relative;
     z-index: 3;
 }
+.section_cont::after { content: ''; display: block; clear: both; }
 
 .section_01_w {
     background-color: #0a242d;
@@ -505,9 +506,10 @@ select {
 .s02_title {
     display: block;
     color: #fff;
-    font-size: 34px;
+    font-size: 40px;
     font-family: '한돈';
-    font-weight: 200;
+    /* font-weight: 200; */
+    margin-bottom: 30px;
 }
 
 

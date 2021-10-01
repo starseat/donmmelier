@@ -8,7 +8,6 @@ function getOsInfo() {
     // OS 버전 보기 
     var uanaVigatorOs = navigator.userAgent;
     var AgentUserOs = uanaVigatorOs.replace(/ /g, '');
-    var OSName = "";
 
     // This script sets OSName variable as follows: 
     // "Windows" for all versions of Windows 
@@ -16,12 +15,24 @@ function getOsInfo() {
     // "Linux" for all versions of Linux 
     // "UNIX" for all other UNIX flavors 
     // "Unknown OS" indicates failure to detect the OS 
-    new function() {
-        var OsNo = navigator.userAgent.toLowerCase();
-        jQuery.os = { Linux: /linux/.test(OsNo), Unix: /x11/.test(OsNo), Mac: /mac/.test(OsNo), Windows: /win/.test(OsNo) }
+    var OsNo = navigator.userAgent.toLowerCase();
+    jQuery.os = { Linux: /linux/.test(OsNo), Unix: /x11/.test(OsNo), Mac: /mac/.test(OsNo), Windows: /win/.test(OsNo) }
+
+    function getAndroidDevName() {
+        var regex = /Android (.*);.*;\s*(.*)\sBuild/;
+        var match = regex.exec(uanaVigatorOs);
+        if(match) {
+            var ver = match[1];
+            var dev_name = match[2];
+            return "Android " + ver + " " + dev_name;
+        }
+
+        return "Android";
+
     }
 
     function OSInfoDev() {
+        var OSName = '';
         if ($.os.Windows) {
             if (AgentUserOs.indexOf("WindowsPhone") != -1) OSName = "Windows Phone";
             else { OSName = "Windows"; }
@@ -51,11 +62,12 @@ function getOsInfo() {
                 OSName = "MacOS (Unknown)";
             }
         } else {
-            OSName = "Unknown OS";
+            OSName = "Unknown";
         }
 
-        return OSName;
+        return OSName || 'Unknown';
     }
 
     return OSInfoDev();
 }
+
